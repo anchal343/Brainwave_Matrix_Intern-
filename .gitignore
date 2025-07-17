@@ -1,0 +1,5 @@
+echo Data/True.csv >> .gitignore
+echo Data/Fake.csv >> .gitignore
+echo Data/fake_or_real_news.csv >> .gitignore
+echo Data/.ipynb_checkpoints/ >> .gitignore
+echo .ipynb_checkpoints/ >> .gitignore

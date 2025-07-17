@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detection</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f4f4;
+            padding: 40px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        textarea, input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 15px;
+            background: #e9f7ef;
+            border-left: 5px solid #28a745;
+            font-size: 18px;
+        }
+        .headline-box {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📰 Fake News Detection</h1>
+        <form method="POST" action="/" enctype="multipart/form-data">
+            <label>Paste news text here...</label>
+            <textarea name="news_text" rows="5" placeholder="Enter the news article text..."></textarea>
+            <button type="submit" name="action" value="predict_text">Predict from Text</button>
+
+            <hr>
+
+            <label>Paste RSS Feed URL (e.g. https://www.indiatoday.in/rss/home)</label>
+            <input type="text" name="rss_url" placeholder="Enter RSS feed URL">
+            <button type="submit" name="action" value="predict_rss">Fetch and Predict RSS Headlines</button>
+
+            <hr>
+
+            <label>Upload .txt File</label>
+            <input type="file" name="file" accept=".txt">
+            <button type="submit" name="action" value="predict_file">Upload and Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <strong>Prediction:</strong> {{ prediction }}<br>
+                <strong>Confidence:</strong> {{ confidence }}
+            </div>
+        {% endif %}
+
+        {% for h in headlines %}
+            <div class="headline-box">
+                <strong>{{ h.headline }}</strong><br>
+                Prediction: {{ h.prediction }}<br>
+                Confidence: {{ h.confidence }}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
