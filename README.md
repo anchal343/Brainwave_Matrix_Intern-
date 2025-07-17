@@ -17,11 +17,8 @@ An interactive web application that detects whether a given news article is **Fa
 
 ## 🖼️ Demo Screenshot
 
-> *(Replace these URLs with real screenshots if you have them)*
+![Demo Screenshot](images/demo.png)
 
-![Input Page](file:///C:/Users/Anchal/Desktop/FakeNewsDetection/Fake%20News%20Detection.html)  
-
----
 
 ## ⚙️ Tech Stack
 
